@@ -19,7 +19,7 @@ This plan is made to easly provision a RPI cluster. The script writes the amount
 
 * **terraform init**    Initialize terraform
 * **terraform plan**    See what the plan is
-* **sudo terraform apply**   Creates the SD Cards for number of hosts in the rpi varibale. (needs sudo for writing SDCard, make sure path is OK!!!)
+* **sudo terraform apply**   Creates the SD Cards for number of hosts in the rpi variabale. (needs sudo for writing SDCard, make sure path is OK!!!)
 
 ### Notes:
 - The network config is in bridge mode to connect my Huawei 4G Hotspot, this can be changed in the templatefile.
