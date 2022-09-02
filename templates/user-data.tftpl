@@ -1,0 +1,46 @@
+#cloud-config
+manage_etc_hosts: false
+
+hostname: ${hostname}
+fqdn: ${hostname}.${fqdn}
+prefer_fqdn_over_hostname: true
+
+
+package_update: false
+package_upgrade: false
+
+ssh_authorized_keys:
+  -  ${public_key}
+
+
+write_files:
+  - path: /etc/netplan/50-cloud-init.yaml
+    permissions: "0644"
+    content: |
+      # This file is generated from information provided by the datasource.  Changes
+      # to it will not persist across an instance reboot.  To disable cloud-init's
+      # network configuration capabilities, write a file
+      # /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following:
+      # network: {config: disabled}
+      network:
+        ethernets:
+          eth0:
+            dhcp4: false
+            optional: true
+          wwx001e101f0000:
+            dhcp4: false
+        bridges:
+          br0:
+            addresses:
+              -  ${ip}/24
+            routes:
+              - to: default
+                via: ${gateway}
+            nameservers:
+              addresses: ${nameservers}
+            interfaces:
+              - eth0
+              - wwx001e101f0000
+runcmd:
+  - 'netplan generate'
+  - 'netplan apply'
