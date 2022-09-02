@@ -1,5 +1,5 @@
 # Terraform RPI SDCard Creator
-This plan is designed for running local on MacOS
+This plan is made to easly provision a RPI cluster. The script writes the amount of SD cards as defined in the local variables for the inital RPI setup.
 
 **Use install_tools.sh to install the following tools on the local machine**
 - Brew
@@ -23,3 +23,4 @@ This plan is designed for running local on MacOS
 
 ### Notes:
 - The network config is in bridge mode to connect my Huawei 4G Hotspot, this can be changed in the templatefile.
+- This plan is tested on MacOS.
